@@ -13,7 +13,7 @@ mgis_library(MFrontGenericInterface SHARED
 	  MaterialDataManager.cxx
 	  Integrate.cxx)
 target_include_directories(MFrontGenericInterface
-	PUBLIC "${CMAKE_SOURCE_DIR}/include")
+       PUBLIC "${PROJECT_SOURCE_DIR}/include")
 if(UNIX)
   if(Threads_FOUND)
     target_link_libraries(MFrontGenericInterface
