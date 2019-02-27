@@ -206,7 +206,7 @@ namespace mgis {
                          n.to_string() + "' is uniform");
       if (mgis::holds_alternative<std::vector<real>>(p->second)) {
         auto& values = mgis::get<std::vector<real>>(p->second);
-        return {&values[0],values.size()};
+        return {&values[0],static_cast<long>(values.size())};
       }
       return mgis::get<span<real>>(p->second);
     }  // end of getNonUniformMaterialProperty
@@ -224,7 +224,7 @@ namespace mgis {
                          n.to_string() + "' is uniform");
       if (mgis::holds_alternative<std::vector<real>>(p->second)) {
         const auto& values = mgis::get<std::vector<real>>(p->second);
-        return {&values[0],values.size()};
+        return {&values[0],static_cast<long>(values.size())};
       }
       return mgis::get<span<real>>(p->second);
     }  // end of getNonUniformMaterialProperty
@@ -317,7 +317,7 @@ namespace mgis {
                          n.to_string() + "' is uniform");
       if (mgis::holds_alternative<std::vector<real>>(p->second)) {
         auto& values = mgis::get<std::vector<real>>(p->second);
-        return {&values[0],values.size()};
+        return {&values[0],static_cast<long>(values.size())};
       }
       return mgis::get<span<real>>(p->second);
     }  // end of getUniformExternalStateVariable
@@ -335,7 +335,7 @@ namespace mgis {
                          n.to_string() + "' is uniform");
       if (mgis::holds_alternative<std::vector<real>>(p->second)) {
         const auto& values = mgis::get<std::vector<real>>(p->second);
-        return {&values[0],values.size()};
+        return {&values[0],static_cast<long>(values.size())};
       }
       return mgis::get<span<real>>(p->second);
     }  // end of getUniformExternalStateVariable
