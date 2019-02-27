@@ -115,10 +115,8 @@ IF(TFEL_CONFIG AND MFRONT AND MFRONT_QUERY)
         ${mfront_output1} ${mfront_output2}
         ${${name}_dependencies_SOURCES})
   endmacro(add_mfront_dependency)
-
-  include(cmake/modules/behaviours.cmake)
   set(MGIS_HAVE_TFEL ON)
-  
+
 ELSE(TFEL_CONFIG AND MFRONT AND MFRONT_QUERY)
   set(MGIS_HAVE_TFEL OFF)
   MESSAGE(STATUS "tfel not found")
