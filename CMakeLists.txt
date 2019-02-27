@@ -202,6 +202,8 @@ endif(CMAKE_BUILD_TYPE STREQUAL "Coverage")
 #detecting TFEL and MFront
 include(cmake/modules/tfel.cmake)
 
+include(cmake/modules/behaviours.cmake)
+
 # add a target to generate API documentation with Doxygen
 option(enable-doxygen-doc "enable generation of the Doxygen documentation" OFF)
 
