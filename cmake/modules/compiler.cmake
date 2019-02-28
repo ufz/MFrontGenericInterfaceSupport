@@ -147,6 +147,8 @@ elseif(MSVC)
   include(cmake/modules/msvc.cmake)
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "PGI")
   include(cmake/modules/pgi.cmake)
+elseif(CMAKE_CXX_COMPILER_ID STREQUAL "AppleClang")
+  include(cmake/modules/clang.cmake)
 else(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   message(FATAL_ERROR "unsupported compiler id ${CMAKE_CXX_COMPILER_ID}")
 endif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
@@ -164,7 +166,7 @@ if(HAVE_NORETURN_ATTRIBUTE)
 else(HAVE_NORETURN_ATTRIBUTE)
   MESSAGE(STATUS "disabling [[ noreturn ]] attribute")
 endif(HAVE_NORETURN_ATTRIBUTE)
-			  
+
 set(CMAKE_C_FLAGS   "${COMPILER_FLAGS} ${COMPILER_CFLAGS} ${COMPILER_C_WARNINGS}")
 set(CMAKE_CXX_FLAGS "${VISIBILITY_FLAGS} ${COMPILER_WARNINGS} ${COMPILER_FLAGS} ${COMPILER_CXXFLAGS}")
 
