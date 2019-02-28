@@ -2,10 +2,15 @@ function(add_mfront_behaviour_sources lib  file)
   set(mfront_file   "${CMAKE_CURRENT_SOURCE_DIR}/${file}.mfront")
   set(mfront_output1 "src/${file}.cxx")
   set(mfront_output2 "src/${file}-generic.cxx")
+  if(DEFINED CONAN_LIB_DIRS_TFEL)
+    # Correctly find tfel shared libs during mfront run when using a tfel
+    # Conan package
+    set(CONAN_ENV_CMD ${CMAKE_COMMAND} -E env DYLD_LIBRARY_PATH=${CONAN_LIB_DIRS_TFEL})
+  endif()
   add_custom_command(
     OUTPUT  "${mfront_output1}"
     OUTPUT  "${mfront_output2}"
-    COMMAND "${MFRONT}"
+    COMMAND ${CONAN_ENV_CMD} "${MFRONT}"
     ARGS    "--interface=generic"
     ARGS     "${mfront_file}"
     DEPENDS "${mfront_file}"
