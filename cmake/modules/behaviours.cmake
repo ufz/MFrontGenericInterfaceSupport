@@ -5,7 +5,16 @@ function(add_mfront_behaviour_sources lib  file)
   if(DEFINED CONAN_LIB_DIRS_TFEL)
     # Correctly find tfel shared libs during mfront run when using a tfel
     # Conan package
-    set(CONAN_ENV_CMD ${CMAKE_COMMAND} -E env DYLD_LIBRARY_PATH=${CONAN_LIB_DIRS_TFEL})
+    if(UNIX)
+        if(APPLE)
+            set(LIBRARY_PATH_ENV_VAR DYLD_LIBRARY_PATH)
+        else()
+            set(LIBRARY_PATH_ENV_VAR LD_LIBRARY_PATH)
+        endif()
+    else()
+        # TODO Win eventually
+    endif()
+    set(CONAN_ENV_CMD ${CMAKE_COMMAND} -E env ${LIBRARY_PATH_ENV_VAR}=${CONAN_LIB_DIRS_TFEL})
   endif()
   add_custom_command(
     OUTPUT  "${mfront_output1}"
