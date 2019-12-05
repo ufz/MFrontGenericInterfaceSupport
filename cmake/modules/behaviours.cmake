@@ -21,6 +21,7 @@ function(add_mfront_behaviour_sources lib  file)
     OUTPUT  "${mfront_output2}"
     COMMAND ${CONAN_ENV_CMD} "${MFRONT}"
     ARGS    "--interface=generic"
+    ARGS    "--@GenericInterfaceGenerateMTestFileOnFailure=true"
     ARGS     "${mfront_file}"
     DEPENDS "${mfront_file}"
     COMMENT "mfront source ${mfront_file}")
@@ -86,7 +87,7 @@ function(mfront_behaviours_check_library name)
       endif(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
     endif(WIN32)
     target_link_libraries(${name}
-      PUBLIC ${TFEL_MFRONT_LIBRARIES})
+      PUBLIC ${TFEL_MFRONT_LIBRARIES} ${MTestFileGenerator})
   else(nb_sources GREATER 0)
     message(STATUS "No sources selected for library ${name}")
   endif(nb_sources GREATER 0)
