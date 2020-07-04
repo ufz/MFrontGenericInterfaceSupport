@@ -16,7 +16,7 @@ add_executable(MFrontGenericBehaviourInterfaceTest
   EXCLUDE_FROM_ALL
   MFrontGenericBehaviourInterfaceTest.cxx)
 target_link_libraries(MFrontGenericBehaviourInterfaceTest
-  PRIVATE MFrontGenericInterface)
+  PRIVATE MFrontGenericInterface BehaviourTest)
 target_compile_definitions(MFrontGenericBehaviourInterfaceTest
   PRIVATE -DTFEL_VERSION="${TFEL_VERSION}")
 
@@ -26,7 +26,7 @@ add_executable(MFrontGenericBehaviourInterfaceTest2
 target_compile_definitions(MFrontGenericBehaviourInterfaceTest2
   PRIVATE -DTFEL_VERSION="${TFEL_VERSION}")
 target_link_libraries(MFrontGenericBehaviourInterfaceTest2
-  PRIVATE MFrontGenericInterface)
+  PRIVATE MFrontGenericInterface BehaviourTest)
 
 add_executable(MFrontGenericBehaviourInterfaceTest3
   EXCLUDE_FROM_ALL
@@ -34,13 +34,13 @@ add_executable(MFrontGenericBehaviourInterfaceTest3
 target_compile_definitions(MFrontGenericBehaviourInterfaceTest3
   PRIVATE -DTFEL_VERSION="${TFEL_VERSION}")
 target_link_libraries(MFrontGenericBehaviourInterfaceTest3
-  PRIVATE MFrontGenericInterface)
+  PRIVATE MFrontGenericInterface BehaviourTest)
 
 add_executable(BoundsCheckTest
   EXCLUDE_FROM_ALL
   BoundsCheckTest.cxx)
 target_link_libraries(BoundsCheckTest
-  PRIVATE MFrontGenericInterface)
+  PRIVATE MFrontGenericInterface BehaviourTest)
 target_compile_definitions(BoundsCheckTest
   PRIVATE -DTFEL_VERSION="${TFEL_VERSION}")
 
@@ -48,34 +48,34 @@ add_executable(ParameterTest
   EXCLUDE_FROM_ALL
   ParameterTest.cxx)
 target_link_libraries(ParameterTest
-  PRIVATE MFrontGenericInterface)
+  PRIVATE MFrontGenericInterface BehaviourTest)
 target_compile_definitions(ParameterTest
   PRIVATE -DTFEL_VERSION="${TFEL_VERSION}")
 
 add_executable(IntegrateTest
   EXCLUDE_FROM_ALL IntegrateTest.cxx)
 target_link_libraries(IntegrateTest
-	PRIVATE MFrontGenericInterface)
+	PRIVATE MFrontGenericInterface BehaviourTest)
 add_executable(IntegrateTest2
   EXCLUDE_FROM_ALL IntegrateTest2.cxx)
 target_link_libraries(IntegrateTest2
-	PRIVATE MFrontGenericInterface)
+	PRIVATE MFrontGenericInterface BehaviourTest)
 add_executable(IntegrateTest2b
   EXCLUDE_FROM_ALL IntegrateTest2b.cxx)
 target_link_libraries(IntegrateTest2b
-	PRIVATE MFrontGenericInterface)
+	PRIVATE MFrontGenericInterface BehaviourTest)
 add_executable(IntegrateTest3
   EXCLUDE_FROM_ALL IntegrateTest3.cxx)
 target_link_libraries(IntegrateTest3
-	PRIVATE MFrontGenericInterface)
+	PRIVATE MFrontGenericInterface BehaviourTest)
 add_executable(IntegrateTest3b
   EXCLUDE_FROM_ALL IntegrateTest3b.cxx)
 target_link_libraries(IntegrateTest3b
-	PRIVATE MFrontGenericInterface)
+	PRIVATE MFrontGenericInterface BehaviourTest)
 add_executable(RotateFunctionsTest
   EXCLUDE_FROM_ALL RotateFunctionsTest.cxx)
 target_link_libraries(RotateFunctionsTest
-	PRIVATE MFrontGenericInterface)
+	PRIVATE MFrontGenericInterface BehaviourTest)
 
 add_test(NAME MFrontGenericBehaviourInterfaceTest
  COMMAND MFrontGenericBehaviourInterfaceTest
