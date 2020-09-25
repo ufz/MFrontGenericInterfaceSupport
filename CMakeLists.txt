@@ -118,7 +118,7 @@ if(enable-python-bindings)
     unset(BUILD_SHARED_LIBS)
   endif(DEFINED TFEL_TMP_BUILD_SHARED_LIBS)
   list(APPEND CPACK_COMPONENTS_ALL python_bindings)
-  set(CPACK_COMPONENT_PYTHON_BINDINGS_DESCRIPTION 
+  set(CPACK_COMPONENT_PYTHON_BINDINGS_DESCRIPTION
     "Contains the python bindings for TFEL, MFront and MTest")
   set(CPACK_COMPONENT_PYTHON_BINDINGS_DEPENDS  core mfront mtest)
   if(enable-broken-boost-python-module-visibility-handling)
@@ -200,9 +200,10 @@ if(CMAKE_BUILD_TYPE STREQUAL "Coverage")
 endif(CMAKE_BUILD_TYPE STREQUAL "Coverage")
 
 #detecting TFEL and MFront
-include(cmake/modules/tfel.cmake)
-
-include(cmake/modules/behaviours.cmake)
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
+find_package(TFEL REQUIRED)
+include(tfel)
+include(behaviours)
 
 # add a target to generate API documentation with Doxygen
 option(enable-doxygen-doc "enable generation of the Doxygen documentation" OFF)
@@ -261,10 +262,10 @@ set(CTEST_CONFIGURATION_TYPE "${JOB_BUILD_CONFIGURATION}")
 # (must be placed *before* any add_subdirectory, cmake bug ?)
 enable_testing()
 if(CMAKE_CONFIGURATION_TYPES)
-  add_custom_target(check COMMAND 
+  add_custom_target(check COMMAND
     ${CMAKE_CTEST_COMMAND} -T test -C $<CONFIGURATION>)
 else(CMAKE_CONFIGURATION_TYPES)
-  add_custom_target(check COMMAND 
+  add_custom_target(check COMMAND
     ${CMAKE_CTEST_COMMAND} -T test )
 endif(CMAKE_CONFIGURATION_TYPES)
 
